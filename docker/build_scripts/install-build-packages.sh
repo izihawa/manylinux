@@ -14,7 +14,7 @@ source $MY_DIR/build_utils.sh
 # make sure the corresponding library is added to RUNTIME_DEPS if applicable
 
 if [ "${BASE_POLICY}" == "manylinux" ]; then
-	COMPILE_DEPS="bzip2-devel ncurses-devel readline-devel gdbm-devel libpcap-devel xz-devel openssl openssl-devel keyutils-libs-devel krb5-devel libcom_err-devel libidn-devel curl-devel uuid-devel libffi-devel kernel-headers libdb-devel"
+	COMPILE_DEPS="bzip2-devel ncurses-devel readline-devel gdbm-devel libpcap-devel xz-devel openssl openssl-devel perl-IPC-Cmd keyutils-libs-devel krb5-devel libcom_err-devel libidn-devel curl-devel uuid-devel libffi-devel kernel-headers libdb-devel"
 	if [ "${AUDITWHEEL_POLICY}" == "manylinux2014" ]; then
 		PACKAGE_MANAGER=yum
 		COMPILE_DEPS="${COMPILE_DEPS} libXft-devel"
@@ -24,7 +24,7 @@ if [ "${BASE_POLICY}" == "manylinux" ]; then
 	fi
 elif [ "${BASE_POLICY}" == "musllinux" ]; then
 	PACKAGE_MANAGER=apk
-	COMPILE_DEPS="bzip2-dev ncurses-dev readline-dev tk-dev gdbm-dev libpcap-dev xz-dev openssl openssl-dev keyutils-dev krb5-dev libcom_err libidn-dev curl-dev util-linux-dev libffi-dev linux-headers"
+	COMPILE_DEPS="bzip2-dev ncurses-dev readline-dev tk-dev gdbm-dev libpcap-dev xz-dev openssl openssl-dev perl-IPC-Cmd keyutils-dev krb5-dev libcom_err libidn-dev curl-dev util-linux-dev libffi-dev linux-headers"
 else
 	echo "Unsupported policy: '${AUDITWHEEL_POLICY}'"
 	exit 1
